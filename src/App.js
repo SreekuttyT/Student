@@ -74,7 +74,7 @@ class App extends Component {
       
       if (!pattern.test(dob)&& age_latest===false) {
         formIsValid = false;
-        formErrors["dobErr"] = "Invalid date of birth the age must be between 5 and 100 ";
+        formErrors["dobErr"] = "Invalid date of birth the age must be between 5 and 80 ";
 
       }
     }
@@ -133,7 +133,7 @@ class App extends Component {
               <input type="text" name="studName"
                 value={this.state.studName}
                 onChange={this.handleChange}
-                placeholder="Your name.."
+                placeholder="Full Name"
                 className={studNameErr ? ' showError' : ''} />
               {studNameErr &&
                 <div style={{ color: "red", paddingBottom: 10 }}>{studNameErr}</div>

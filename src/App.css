@@ -1,17 +1,28 @@
 
 .formDiv {    
-   width: 300px;
+   width: 450px;
   border: 1px solid #000000;
   padding: 0px 15px 15px 15px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-family: arial;
   line-height: 16px;
   color: #333333;
   font-size: 14px;
-  background: #C0C0C0;
+  background: #ffff;
   margin: 100px auto;
 
   }  
+
+  
+  
+
+
+  html{
+	background:url('https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-01.jpg') repeat center top #826e79;
+}
+
+
+
   
   label {
     font-size: 13px;
@@ -51,13 +62,17 @@
   }
   
   .submit button {
-  background-color: #4169E1;
-  font-weight: bold;
-  padding: 12px 15px;
+  background: #016ABC;
+color: #fff;
+border: 1px solid #eee;
+border-radius: 20px;
+box-shadow: 5px 5px 5px #eee;
+text-shadow:none;
+font-size: 16px;
+padding: 14px 40px;
   
   }
-  
-  
+ 
   
       
   input[type=text], select     
@@ -78,7 +93,7 @@
   
   input[type=submit] {    
     width: 100%;    
-    background-color: #ffff;    
+    background-color: #4c9baf;    
     color: white;    
     padding: 14px 20px;    
     margin: 8px 0;    
