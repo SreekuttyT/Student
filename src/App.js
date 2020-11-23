@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import axios from 'axios';
 
 
 class App extends Component {
@@ -22,14 +23,14 @@ class App extends Component {
 
   calculate_age = (dob1) => {
     var today = new Date();
-    var birthDate = new Date(dob1);  // create a date object directly from `dob1` argument
+    var birthDate = new Date(dob1); 
     var age_now = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age_now--;
     }
     var age = null
-    // console.log(age_now);
+
 
     if (age_now > 5 && age_now < 80) {
       age = true;
@@ -37,7 +38,7 @@ class App extends Component {
     else {
       age = false;
     }
-    // console.log(age)
+    
     return age;
   }
 
@@ -46,22 +47,22 @@ class App extends Component {
     let formErrors = {};
     let formIsValid = true;
     let age_latest = null;
-    // Name     
+        
     if (!studName) {
       formIsValid = false;
       formErrors["studNameErr"] = "Name is required";
     }
     else {
-        var pattern = /^[a-zA-Z\s]+$/;
+        var n = /^[a-zA-Z\s]+$/;
         
-        if (!pattern.test(studName)) {
+        if (!n.test(studName)) {
             formIsValid = false;
             formErrors["studNameErr"] = "Invalid Name";
         }
     }
     
     
-    // DOB   
+    
 
     
     if (!dob) {
@@ -79,19 +80,19 @@ class App extends Component {
       }
     }
 
-    //  Division   
+      
     if (division === '' || division === "select") {
       formIsValid = false;
       formErrors["divisionErr"] = "Select division.";
     }
 
-    //   gender
+    
 
     if (gender === '' || gender === "select") {
       formIsValid = false;
       formErrors["genderErr"] = "Select gender.";
     }
-    // Class    
+        
     if (class1 === '' || class1 === "select") {
       formIsValid = false;
       formErrors["class1Err"] = "Select Class.";
@@ -114,6 +115,16 @@ class App extends Component {
     if (this.handleFormValidation()) {
       alert('You have been successfully registered.')
       this.setState(this.initialState)
+
+
+
+      axios.post("http://localhost:6039/student",this.state)
+      .then(response => {
+      if(response.data!=null){
+      this.setState({"show":true});
+      setTimeout(() => this.setState({"show":false}),3000);}
+      else{ this.setState({"show":false}); }});
+      this.setState(this.initialState);
     }
   }
   render() {
@@ -182,7 +193,7 @@ class App extends Component {
                 value={this.state.class1}
                 onChange={this.handleChange}
                 className={class1Err ? ' showError' : ''} >
-                        <option value="-1" selected>Select</option>
+                        <option value="select">Select</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>
